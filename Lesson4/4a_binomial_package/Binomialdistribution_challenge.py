@@ -1,6 +1,11 @@
 # TODO: import necessary libraries
+import math
+import matplotlib.pyplot as plt
+from .Generaldistribution import Distribution
+
 
 # TODO: make a Binomial class that inherits from the Distribution class. Use the specifications below.
+class Binomial(Distribution):
     """ Binomial distribution class for calculating and 
     visualizing a Binomial distribution.
     
@@ -22,14 +27,17 @@
     #       You can then calculate the mean and standard deviation with the following formula:
     #           mean = p * n
     #           standard deviation = sqrt(n * p * (1 - p))
-    
+
     #       
 
     # TODO: define the init function
-        
+    def __init__(self,p=0,n=0):
+
+        Distribution.__init__(self,mu,sigma)
         # TODO: store the probability of the distribution in an instance variable p
+        self.p = p
         # TODO: store the size of the distribution in an instance variable n
-        
+        self.n = n
         # TODO: Now that you know p and n, you can calculate the mean and standard deviation
         #       You can use the calculate_mean() and calculate_stdev() methods defined below along with the __init__ function from the Distribution class
             
