@@ -57,7 +57,7 @@ class Binomial(Distribution):
          
 
     #TODO: write a calculate_stdev() method accordin to the specifications below.
-
+    def calculate_stdev(self):
         """Function to calculate the standard deviation from p and n.
         
         Args: 
@@ -67,6 +67,9 @@ class Binomial(Distribution):
             float: standard deviation of the data set
     
         """
+        self.stdev = math.sqrt(self.n*self.p*(1-self.p))
+
+        return self.stdev
 
     # TODO: write a replace_stats_with_data() method according to the specifications below. The read_data_file() from the Generaldistribution class can read in a data
     # file. Because the Binomaildistribution class inherits from the Generaldistribution class,
@@ -85,7 +88,7 @@ class Binomial(Distribution):
     #
     #       Hint: You can use the calculate_mean() and calculate_stdev() methods
     #           defined previously.
-
+    def replace_stats_with_data(self):
         """Function to calculate p and n from the data set. The function updates the p and n variables of the object.
         
         Args: 
@@ -96,7 +99,12 @@ class Binomial(Distribution):
             float: the n value
     
         """
-    
+        self.n = len(data)
+        self.p = data.count(1)/self.n
+        self.mean = self.calculate_mean()
+        self.stdev = self.calculate_stdev()
+
+        return self.p, self.n
     # TODO: write a method plot_bar() that outputs a bar chart of the data set according to the following specifications.
         """Function to output a histogram of the instance variable data using 
         matplotlib pyplot library.
