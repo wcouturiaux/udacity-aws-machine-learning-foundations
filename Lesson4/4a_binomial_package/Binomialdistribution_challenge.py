@@ -122,6 +122,7 @@ class Binomial(Distribution):
         plt.ylabel('Count')
     
     #TODO: Calculate the probability density function of the binomial distribution
+    def pdf(k):
         """Probability density function calculator for the binomial distribution.
         
         Args:
@@ -131,7 +132,6 @@ class Binomial(Distribution):
         Returns:
             float: probability density function output
         """
-    def pdf(k):
         binomial_coefficient = math.factorial(self.n)/(math.factorial(k)*math.factorial(self.n-k))
         a = (self.p**k)*(1-self.p)**(self.n-k)
 
