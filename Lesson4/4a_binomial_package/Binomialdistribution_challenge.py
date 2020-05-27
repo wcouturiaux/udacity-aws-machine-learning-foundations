@@ -99,8 +99,8 @@ class Binomial(Distribution):
             float: the n value
     
         """
-        self.n = len(data)
-        self.p = data.count(1)/self.n
+        self.n = len(self.data)
+        self.p = self.data.count(1)/self.n
         self.mean = self.calculate_mean()
         self.stdev = self.calculate_stdev()
 
@@ -122,7 +122,7 @@ class Binomial(Distribution):
         plt.ylabel('Count')
     
     #TODO: Calculate the probability density function of the binomial distribution
-    def pdf(k):
+    def pdf(self,k):
         """Probability density function calculator for the binomial distribution.
         
         Args:
@@ -135,9 +135,9 @@ class Binomial(Distribution):
         binomial_coefficient = math.factorial(self.n)/(math.factorial(k)*math.factorial(self.n-k))
         a = (self.p**k)*(1-self.p)**(self.n-k)
 
-        return binomial_coefficient*b
+        return binomial_coefficient*a
     # write a method to plot the probability density function of the binomial distribution
-
+    def plot_pdf(self):
         """Function to plot the pdf of the binomial distribution
         
         Args:
@@ -159,7 +159,20 @@ class Binomial(Distribution):
 
         #   This method should also return the x and y values used to make the chart
         #   The x and y values should be stored in separate lists
-                
+        x=[]
+        y=[]
+
+        for i in range(0,self.n):
+            x.append(i)
+            y.append(self.pdf(i))
+
+        plt.bar(x=x,height=y)
+        plt.title('Binomial Probability Density')
+        plt.xlabel('Value')
+        plt.ylabel('Probability')
+        plt.show()
+
+        return x,y
     # write a method to output the sum of two binomial distributions. Assume both distributions have the same p value.
         
         """Function to add together two Binomial distributions with equal p
