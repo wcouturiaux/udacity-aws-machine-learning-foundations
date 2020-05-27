@@ -33,14 +33,13 @@ class Binomial(Distribution):
     # TODO: define the init function
     def __init__(self,p=0,n=0):
 
-        Distribution.__init__(self, self.calculate_mean(), self.calculate_stdev())
         # TODO: store the probability of the distribution in an instance variable p
         self.p = p
         # TODO: store the size of the distribution in an instance variable n
         self.n = n
         # TODO: Now that you know p and n, you can calculate the mean and standard deviation
         #       You can use the calculate_mean() and calculate_stdev() methods defined below along with the __init__ function from the Distribution class
-            
+        Distribution.__init__(self, self.calculate_mean(), self.calculate_stdev())            
     # TODO: write a method calculate_mean() according to the specifications below
     def calculate_mean(self):
         """Function to calculate the mean from p and n
