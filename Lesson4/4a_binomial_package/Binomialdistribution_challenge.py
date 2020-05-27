@@ -106,6 +106,7 @@ class Binomial(Distribution):
 
         return self.p, self.n
     # TODO: write a method plot_bar() that outputs a bar chart of the data set according to the following specifications.
+    def plot_bar(self):
         """Function to output a histogram of the instance variable data using 
         matplotlib pyplot library.
         
@@ -115,6 +116,10 @@ class Binomial(Distribution):
         Returns:
             None
         """
+        plt.bar(x=['0','1'],height=[(1-self.p)*self.n,self.p*self.n])
+        plt.title('Bar Chart of Data')
+        plt.xlabel('Outcome')
+        plt.ylabel('Count')
     
     #TODO: Calculate the probability density function of the binomial distribution
         """Probability density function calculator for the binomial distribution.
