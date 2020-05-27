@@ -174,7 +174,7 @@ class Binomial(Distribution):
 
         return x,y
     # write a method to output the sum of two binomial distributions. Assume both distributions have the same p value.
-        
+    def __add__(self,other):
         """Function to add together two Binomial distributions with equal p
         
         Args:
@@ -199,9 +199,15 @@ class Binomial(Distribution):
         
         # Hint: When adding two binomial distributions, the p value remains the same
         #   The new n value is the sum of the n values of the two distributions.
-                        
+        new_binomial = Binomial()
+        new_binomial.p = self.p
+        new_binomial.n = self.n + other.n
+        new_binomial.calculate_mean()
+        new_binomial.calculate_stdev()
+
+        return new_binomial                
     # use the __repr__ magic method to output the characteristics of the binomial distribution object.
-    
+    def __repr__(self):
         """Function to output the characteristics of the Binomial instance
         
         Args:
@@ -218,4 +224,5 @@ class Binomial(Distribution):
         #       with the values replaced by whatever the actual distributions values are
         #       The method should return a string in the expected format
     
-        pass
+        return "mean {}, standard deviation {}, p {}, n {}".format(self.mean,\
+            self.stdev,self.p,self.n)
